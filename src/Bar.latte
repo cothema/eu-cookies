@@ -1,16 +1,18 @@
-<div class="eu-cookies text-center" n:if="empty($_COOKIE['eu-cookies'])">
-    {_cothema-eu-cookies.thisWebUses} <span class="hidden-md hidden-sm hidden-xs">{_cothema-eu-cookies.purposes}</span> {_cothema-eu-cookies.cookieFiles}. {_cothema-eu-cookies.byUsingYouAgree}
-    &nbsp;
-    <button class="btn btn-success btn-xs">{_cothema-eu-cookies.ok}</button>
-    &nbsp;
-    <a n:if="$moreInfoLink" href="{$moreInfoLink}">{_cothema-eu-cookies.moreInfo}</a>
-</div>
-<noscript><style>.eu-cookies { display:none }</style></noscript>
-<script>
-    $('.eu-cookies button').click(function () {
-        var date = new Date();
-        date.setFullYear(date.getFullYear() + 10);
-        document.cookie = 'eu-cookies=1; path=/; expires=' + date.toGMTString();
-        $('.eu-cookies').hide();
-    });
-</script>
+{if !$alreadyConfirmed}
+    <div class="eu-cookies text-center" n:if="empty($_COOKIE['eu-cookies'])">
+        {_cothema-eu-cookies.thisWebUses} <span class="hidden-md hidden-sm hidden-xs">{_cothema-eu-cookies.purposes}</span> {_cothema-eu-cookies.cookieFiles}. {_cothema-eu-cookies.byUsingYouAgree}
+        &nbsp;
+        <button class="btn btn-success btn-xs CookiesOK">{_cothema-eu-cookies.ok}</button>
+        &nbsp;
+        <a n:if="$moreInfoLink" href="{$moreInfoLink}">{_cothema-eu-cookies.moreInfo}</a>
+    </div>
+    <noscript><style>.eu-cookies { display:none }</style></noscript>
+    <script>
+        $('.eu-cookies button').click(function () {
+            var date = new Date();
+            date.setFullYear(date.getFullYear() + 10);
+            document.cookie = 'eu-cookies=1; path=/; expires=' + date.toGMTString();
+            $('.eu-cookies').hide();
+        });
+    </script>
+{/if}
