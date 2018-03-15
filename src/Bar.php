@@ -2,11 +2,14 @@
 
 namespace Cothema\EuCookies;
 
-class Bar extends \Nette\Application\UI\Control {
+class Bar extends \Nette\Application\UI\Control
+{
 
+    /** @var string */
     public $moreInfoLink = 'https://www.google.com/policies/technologies/cookies/';
 
-    public function render() {
+    public function render()
+    {
         $template = $this->template;
         $template->setFile(__DIR__ . '/Bar.latte');
         $template->moreInfoLink = $this->moreInfoLink;
@@ -15,11 +18,9 @@ class Bar extends \Nette\Application\UI\Control {
         $template->render();
     }
 
-    private function isAlreadyConfirmed() {
-        if (isset($_SERVER["HTTP-X-COOKIESOK"])) {
-            return TRUE;
-        }
-        return FALSE;
+    private function isAlreadyConfirmed()
+    {
+        return isset($_SERVER["HTTP-X-COOKIESOK"]);
     }
 
 }
